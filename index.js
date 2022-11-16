@@ -6,12 +6,14 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
 
     var buttonInnerHtml = this.innerHTML;
     makeSound(buttonInnerHtml);
+    buttonAnimation(buttonInnerHtml);
   });
 
 }
 // Detecting keyboard press
 document.addEventListener("keydown", function(event){
   makeSound(event.key);
+  buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -57,22 +59,11 @@ function makeSound(key) {
     }
 }
 
+function buttonAnimation (currentKey){
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+  }, 100);  
 
-
-
-// document.querySelectorAll("button")[0].addEventListener("click", handleClick);
-// document.querySelectorAll("button")[1].addEventListener("click", handleClick);
-// document.querySelectorAll("button")[2].addEventListener("click", handleClick);
-// document.querySelectorAll("button")[3].addEventListener("click", handleClick);
-// document.querySelectorAll("button")[4].addEventListener("click", handleClick);
-//
-// function handleClick() {
-//   alert("I got clicked");
-// }
-
-// document.addEventListner("click", handleClick);
-//
-// function handleClick() {
-//   document.document.querySelectorAll("button");
-//   alert("I got clicked");
-// }
+}
